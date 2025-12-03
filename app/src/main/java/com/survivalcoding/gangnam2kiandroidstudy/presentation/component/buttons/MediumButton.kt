@@ -74,7 +74,7 @@ fun MediumButton(
                     style = AppTextStyles.normalTextBold.copy(color = AppColors.white)
                 )
             }
-            Spacer(modifier = modifier.width(9.dp))
+            Spacer(modifier = Modifier.width(9.dp))
             Icon(
                 painter = painterResource(R.drawable.ic_arrow_right_outline),
                 tint = AppColors.white,

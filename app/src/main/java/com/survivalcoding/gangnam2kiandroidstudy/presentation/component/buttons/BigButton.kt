@@ -73,7 +73,7 @@ fun BigButton(
                     style = AppTextStyles.normalTextBold.copy(color = AppColors.white)
                 )
             }
-            Spacer(modifier = modifier.width(11.dp))
+            Spacer(modifier = Modifier.width(11.dp))
             Icon(
                 painter = painterResource(R.drawable.ic_arrow_right_outline),
                 tint = AppColors.white,
