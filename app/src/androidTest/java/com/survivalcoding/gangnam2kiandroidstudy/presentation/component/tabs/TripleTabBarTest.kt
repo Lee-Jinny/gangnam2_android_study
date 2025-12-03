@@ -60,5 +60,4 @@ class TripleTabBarTest {
         composeTestRule.onAllNodesWithText("Label")[2].performClick()
         assertEquals(2, selectedIndex)
     }
-
 }
