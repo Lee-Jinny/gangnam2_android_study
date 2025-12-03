@@ -1,5 +1,8 @@
 package com.survivalcoding.gangnam2kiandroidstudy.presentation.component.textfields
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -15,7 +18,7 @@ class InputFieldTest {
 
     @Test
     fun inputField_Enabled() {
-        var text = ""
+        var text by mutableStateOf("")
 
         composeTestRule.setContent {
             InputField(
@@ -29,14 +32,16 @@ class InputFieldTest {
         inputNode.assertIsDisplayed()
 
         inputNode.performTextInput("Hello")
-        assert(text == "Hello")
+        composeTestRule.onNodeWithText("Hello").assertExists()
     }
 
     @Test
     fun inputField_Disabled() {
+        var text by mutableStateOf("")
+
         composeTestRule.setContent {
             InputField(
-                value = "",
+                value = text,
                 onValueChange = {},
                 placeholderText = "Disabled Input",
                 enabled = false
