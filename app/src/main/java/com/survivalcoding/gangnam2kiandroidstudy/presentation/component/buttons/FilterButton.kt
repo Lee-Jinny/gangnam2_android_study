@@ -74,21 +74,6 @@ private fun FilterButtonPreview() {
             isSelected = selected,
             onClick = { selected = !selected },
         )
-        FilterButton(
-            text = "Popular",
-            isSelected = selected,
-            onClick = { selected = !selected },
-        )
-        FilterButton(
-            text = "Soup",
-            isSelected = selected,
-            onClick = { selected = !selected },
-        )
-        FilterButton(
-            text = "Category Name",
-            isSelected = selected,
-            onClick = { selected = !selected },
-        )
     }
 }
 
