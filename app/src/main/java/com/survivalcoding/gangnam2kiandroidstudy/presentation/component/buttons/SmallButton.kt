@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -42,7 +43,7 @@ fun SmallButton(
 
     Box(
         modifier = modifier
-            .size(width = 174.dp, height = 37.dp)
+            .defaultMinSize(minWidth = 59.dp, minHeight = 20.dp)// 최소 규격
             .background(
                 color = backgroundColor,
                 shape = RoundedCornerShape(10.dp)
@@ -79,8 +80,8 @@ fun SmallButton(
 @Composable
 fun SmallButtonPreview() {
     Column {
-        SmallButton("Button")
+        SmallButton("Send", modifier = Modifier.size(59.dp, 35.dp))
         Spacer(Modifier.size(10.dp))
-        SmallButton("Disabled", enabled = false)
+        SmallButton("Disabled", modifier = Modifier.size(85.dp, 43.dp), enabled = false)
     }
 }

@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -47,7 +49,7 @@ fun MediumButton(
 
     Box(
         modifier = modifier
-            .size(width = 243.dp, height = 54.dp)
+            .height(54.dp)
             .background(
                 color = backgroundColor,
                 shape = RoundedCornerShape(10.dp)
@@ -88,7 +90,9 @@ fun MediumButton(
 @Preview(showBackground = true)
 @Composable
 fun MediumButtonPreview() {
-    Column {
+    Column(
+        modifier = Modifier.padding(horizontal = 66.dp)
+    ) {
         MediumButton("Button")
         Spacer(Modifier.size(10.dp))
         MediumButton("Disabled", enabled = false)

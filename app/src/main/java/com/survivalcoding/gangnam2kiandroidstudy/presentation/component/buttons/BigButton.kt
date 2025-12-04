@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -46,7 +48,7 @@ fun BigButton(
 
     Box(
         modifier = modifier
-            .size(width = 315.dp, height = 60.dp)
+            .height(60.dp)
             .background(
                 color = backgroundColor,
                 shape = RoundedCornerShape(10.dp)
@@ -87,7 +89,9 @@ fun BigButton(
 @Preview(showBackground = true)
 @Composable
 fun BigButtonPreview() {
-    Column {
+    Column (
+        modifier = Modifier.padding(horizontal = 30.dp)
+    ) {
         BigButton("Button")
         Spacer(Modifier.size(10.dp))
         BigButton("Disabled", enabled = false)
