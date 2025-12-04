@@ -178,7 +178,6 @@ fun RecipeScreen(modifier: Modifier = Modifier) {
 
     if (showDialog) {
         RateDialog(
-            modifier = Modifier.padding(horizontal = 102.dp),
             title = "Rate recipe",
             actionName = "Send",
             onChange = {

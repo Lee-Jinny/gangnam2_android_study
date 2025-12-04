@@ -32,9 +32,9 @@ import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppTextStyles
 
 @Composable
 fun RateDialog(
+    modifier: Modifier = Modifier,
     title: String,
     actionName: String,
-    modifier: Modifier = Modifier,
     onChange: (Int) -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -42,7 +42,7 @@ fun RateDialog(
 
     Dialog(onDismissRequest = onDismiss) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .padding(horizontal = 82.dp)
                 .height(91.dp)
                 .background(AppColors.white, RoundedCornerShape(8.dp))
