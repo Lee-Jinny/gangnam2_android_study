@@ -76,8 +76,8 @@ fun TripleTabBarPreview() {
     Column {
         TripleTabBar(
             leftTab = "Left",
-            centerTab = "Right",
-            rightTab = "Center",
+            centerTab = "Center",
+            rightTab = "Right",
             selectedIndex = selectedTab1,
             onTabSelected = {
                 selectedTab1 = it
@@ -86,8 +86,8 @@ fun TripleTabBarPreview() {
 
         TripleTabBar(
             leftTab = "Left",
-            centerTab = "Right",
-            rightTab = "Center",
+            centerTab = "Center",
+            rightTab = "Right",
             selectedIndex = selectedTab2,
             onTabSelected = {
                 selectedTab2 = it
@@ -96,8 +96,8 @@ fun TripleTabBarPreview() {
 
         TripleTabBar(
             leftTab = "Left",
-            centerTab = "Right",
-            rightTab = "Center",
+            centerTab = "Center",
+            rightTab = "Right",
             selectedIndex = selectedTab3,
             onTabSelected = {
                 selectedTab3 = it
