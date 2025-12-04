@@ -3,7 +3,6 @@ package com.survivalcoding.gangnam2kiandroidstudy.presentation.component.buttons
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -34,12 +33,13 @@ fun SmallButton(
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
-    val isHovered by interactionSource.collectIsHoveredAsState()
 
     val backgroundColor =
-        if (!enabled) AppColors.gray4
-        else if (isPressed || isHovered) AppColors.primary80
-        else AppColors.primary100
+        when {
+            !enabled -> AppColors.gray4 // 진짜 비활성
+            isPressed -> AppColors.gray4    // 누르고 있는 동안만 Disable
+            else -> AppColors.primary100    // 나머지는 기본 색
+        }
 
     Box(
         modifier = modifier
