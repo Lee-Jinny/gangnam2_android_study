@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,32 +37,35 @@ fun TripleTabBar(
         TabItem(
             text = leftTab,
             selected = selectedIndex == 0,
-            width = 107.dp,
-            innerWidth = 83.dp,
-            onClick = { onTabSelected(0) }
+            onClick = { onTabSelected(0) },
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = 12.dp)
         )
 
-        Spacer(Modifier.weight(1f))
+        Spacer(Modifier.width(7.dp))
 
         // center
         TabItem(
             text = centerTab,
             selected = selectedIndex == 1,
-            width = 107.dp,
-            innerWidth = 83.dp,
-            onClick = { onTabSelected(1) }
+            onClick = { onTabSelected(1) },
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = 12.dp)
         )
 
-        Spacer(Modifier.weight(1f))
+        Spacer(Modifier.width(7.dp))
 
         // right
         TabItem(
             text = rightTab,
             selected = selectedIndex == 2,
-            width = 107.dp,
             height = 33.dp,
-            innerWidth = 83.dp,
-            onClick = { onTabSelected(2) }
+            onClick = { onTabSelected(2) },
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = 12.dp)
         )
     }
 }
