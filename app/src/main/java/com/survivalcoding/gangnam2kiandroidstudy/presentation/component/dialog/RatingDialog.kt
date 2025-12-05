@@ -82,7 +82,7 @@ fun RateDialog(
                                 .size(20.dp)
                                 .clickable {
                                     selectedRating = if (selectedRating == value) {
-                                        (value - 1).coerceAtLeast(1)  // 같은 별 클릭 선택 해제
+                                        (value - 1).coerceAtLeast(0)  // 같은 별 클릭 선택 해제
                                     } else {
                                         value // 다른 별 선택 선택 변경
                                     }
