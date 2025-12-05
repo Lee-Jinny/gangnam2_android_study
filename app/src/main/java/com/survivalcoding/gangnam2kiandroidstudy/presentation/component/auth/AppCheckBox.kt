@@ -1,4 +1,4 @@
-package com.survivalcoding.gangnam2kiandroidstudy.presentation.component.checkbox
+package com.survivalcoding.gangnam2kiandroidstudy.presentation.component.auth
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

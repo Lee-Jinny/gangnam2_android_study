@@ -13,7 +13,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.survivalcoding.gangnam2kiandroidstudy.presentation.sign_in.SignInScreen
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.sign_in.SignUpScreen
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.util.KeyboardVisibilityHandler
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
 
@@ -38,7 +38,8 @@ class MainActivity : ComponentActivity() {
                             .padding(horizontal = 30.dp),
                     ) {
 
-                        SignInScreen()
+                        // SignInScreen()
+                        SignUpScreen()
                         // RecipeScreen()
                     }
                 }
