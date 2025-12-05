@@ -37,4 +37,9 @@
     <string name="icon_google_description">Sign in with Google</string>
     <string name="icon_facebook_description">Sign in with Facebook</string>
 
+    <!-- AppCheckBox-->
+    <string name="ic_check_description">Checked</string>
+    <string name="ic_uncheck_description">Unchecked</string>
+
+
 </resources>

@@ -9,15 +9,24 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,11 +44,16 @@ import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppTextStyles
 fun SignUpScreen(
     modifier: Modifier = Modifier,
 ) {
-    var nameInput by remember { mutableStateOf("") }
-    var emailInput by remember { mutableStateOf("") }
-    var passwordInput by remember { mutableStateOf("") }
-    var confirmPasswordInput by remember { mutableStateOf("") }
-    var checked by remember { mutableStateOf(false) }
+    var nameInput by rememberSaveable { mutableStateOf("") }
+    var emailInput by rememberSaveable { mutableStateOf("") }
+    var passwordInput by rememberSaveable { mutableStateOf("") }
+    var confirmPasswordInput by rememberSaveable { mutableStateOf("") }
+    var checked by rememberSaveable { mutableStateOf(false) }
+
+    val emailFocusRequester = remember { FocusRequester() }
+    val passwordFocusRequester = remember { FocusRequester() }
+    val confirmPasswordFocusRequester = remember { FocusRequester() }
+    val focusManager = LocalFocusManager.current
 
     LazyColumn(
         modifier = modifier.fillMaxSize(),
@@ -73,6 +87,14 @@ fun SignUpScreen(
                 label = stringResource(R.string.label_name),
                 onValueChange = { nameInput = it },
                 placeholderText = stringResource(R.string.placeholder_name),
+                keyboardOptions = KeyboardOptions(
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = {
+                        emailFocusRequester.requestFocus()
+                    }
+                )
             )
         }
 
@@ -84,6 +106,16 @@ fun SignUpScreen(
                 label = stringResource(R.string.label_email),
                 onValueChange = { emailInput = it },
                 placeholderText = stringResource(R.string.placeholder_email),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = {
+                        passwordFocusRequester.requestFocus()
+                    }
+                ),
+                modifier = Modifier.focusRequester(emailFocusRequester)
             )
         }
 
@@ -95,6 +127,17 @@ fun SignUpScreen(
                 label = stringResource(R.string.label_password),
                 onValueChange = { passwordInput = it },
                 placeholderText = stringResource(R.string.placeholder_password),
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Password,
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = {
+                        confirmPasswordFocusRequester.requestFocus()
+                    }
+                ),
+                modifier = Modifier.focusRequester(passwordFocusRequester)
             )
         }
 
@@ -106,6 +149,17 @@ fun SignUpScreen(
                 label = stringResource(R.string.label_confirm_password),
                 onValueChange = { confirmPasswordInput = it },
                 placeholderText = stringResource(R.string.placeholder_confirm_password),
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Password,
+                    imeAction = ImeAction.Done
+                ),
+                keyboardActions = KeyboardActions(
+                    onDone = {
+                        focusManager.clearFocus()
+                    }
+                ),
+                modifier = Modifier.focusRequester(confirmPasswordFocusRequester)
             )
         }
 

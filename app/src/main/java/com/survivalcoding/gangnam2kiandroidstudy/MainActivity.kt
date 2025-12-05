@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                             .padding(horizontal = 30.dp),
                     ) {
 
-                        // SignInScreen()
+                        //SignInScreen()
                         SignUpScreen()
                         // RecipeScreen()
                     }

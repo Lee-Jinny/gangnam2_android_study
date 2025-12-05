@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.survivalcoding.gangnam2kiandroidstudy.R
@@ -45,8 +46,11 @@ fun AppCheckBox(
         if (checked) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_checked),
-                contentDescription = "checked",
-                tint = Color.White,
+                contentDescription = if (checked)
+                    stringResource(R.string.ic_check_description)
+                else
+                    stringResource(R.string.ic_uncheck_description),
+                tint = AppColors.white,
                 modifier = Modifier.size(14.dp)
             )
         }
