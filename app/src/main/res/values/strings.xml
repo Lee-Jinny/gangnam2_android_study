@@ -20,7 +20,7 @@
 
     <!-- Sign Up -->
     <string name="signup_title">Create an account</string>
-    <string name="signup_subtitle">Let’s help you set up your account,\nit won’t take long.</string>
+    <string name="signup_subtitle">Let’s help you set up your account, it won’t take long.</string>
     <string name="label_name">Name</string>
     <string name="placeholder_name">Enter Name</string>
     <string name="label_confirm_password">Confirm Password</string>
