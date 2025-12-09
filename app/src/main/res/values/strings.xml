@@ -46,4 +46,8 @@
     <string name="splash_title">Get Cooking </string>
     <string name="splash_subtitle">Simple way to find Tasty Recipe</string>
     <string name="splash_button">Start Cooking</string>
+
+    <!-- AppBar-->
+    <string name="ic_back_description">Backward</string>
+    <string name="ic_more_description">More Info</string>
 </resources>
