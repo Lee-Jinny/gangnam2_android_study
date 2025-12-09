@@ -16,8 +16,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.survivalcoding.gangnam2kiandroidstudy.data.model.IngredientItem
-import com.survivalcoding.gangnam2kiandroidstudy.data.model.RecipeIngredient
+import com.survivalcoding.gangnam2kiandroidstudy.model.IngredientItem
+import com.survivalcoding.gangnam2kiandroidstudy.model.RecipeIngredient
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.Items.IngredientItem
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.Items.RecipeCard
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.buttons.BigButton
