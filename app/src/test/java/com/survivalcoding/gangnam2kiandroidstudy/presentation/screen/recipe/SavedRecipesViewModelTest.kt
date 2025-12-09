@@ -30,6 +30,9 @@ class SavedRecipesViewModelTest {
 
     @Test
     fun `초기 상태 - emptyList`() = runTest {
+        // given
+        coEvery { fakeRepository.getRecipes() } returns emptyList()
+
         // when
         val viewModel = SavedRecipesViewModel(fakeRepository)
 
