@@ -1,5 +1,7 @@
 package com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.recipe
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,22 +26,26 @@ fun SavedRecipesScreen(
 ) {
     val recipesState by viewModel.recipes.collectAsState()
 
-    CustomAppTopBar(
-        text = stringResource(R.string.saved_recipes_title)
-    )
-    LazyColumn{
-        items(recipesState) { recipe ->
-            RecipeCard(
-                modifier = Modifier.padding(vertical = 10.dp),
-                name = recipe.title,
-                imageUrl = recipe.imageUrls,
-                chef = recipe.chef,
-                time = recipe.time,
-                rating = recipe.rating,
-            )
+    Column {
+        CustomAppTopBar(
+            text = stringResource(R.string.saved_recipes_title)
+        )
+        LazyColumn (
+            modifier = Modifier.fillMaxSize()
+        ) {
+            items(recipesState) { recipe ->
+                RecipeCard(
+                    modifier = Modifier.padding(vertical = 10.dp),
+                    name = recipe.title,
+                    imageUrl = recipe.imageUrls,
+                    chef = recipe.chef,
+                    time = recipe.time,
+                    rating = recipe.rating,
+                )
+
+            }
 
         }
-
     }
 }
 
