@@ -22,10 +22,10 @@ class SavedRecipesViewModel(
     val recipes: StateFlow<List<RecipeCard>> = _recipes.asStateFlow()
 
     init {
-        getRecipes()
+        loadRecipes()
     }
 
-    fun getRecipes() {
+    private fun loadRecipes() {
         viewModelScope.launch {
             val result = repository.getRecipes()
             _recipes.value = result

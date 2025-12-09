@@ -5,6 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,13 +22,13 @@ fun SavedRecipesScreen(
         factory = SavedRecipesViewModel.Factory
     )
 ) {
-    val recipesState = viewModel.recipes.collectAsState()
+    val recipesState by viewModel.recipes.collectAsState()
 
     CustomAppTopBar(
         text = stringResource(R.string.saved_recipes_title)
     )
     LazyColumn{
-        items(recipesState.value) { recipe ->
+        items(recipesState) { recipe ->
             RecipeCard(
                 modifier = Modifier.padding(vertical = 10.dp),
                 name = recipe.title,
