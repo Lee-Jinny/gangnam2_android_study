@@ -58,7 +58,7 @@
     <string name="search_bar_placeholder">Search recipe</string>
     <string name="ic_search_filter_description">Search Filter Button</string>
 
-    <!-- Search Recipies-->
+    <!-- Search Recipes-->
     <string name="recent_search_subtitle">Recent Search</string>
     <string name="search_result_subtitle">Search Result</string>
     <string name="result_count_format">%1$d results</string>
