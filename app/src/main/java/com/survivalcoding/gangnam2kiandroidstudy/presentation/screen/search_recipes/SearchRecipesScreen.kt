@@ -17,7 +17,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -32,23 +31,18 @@ import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppTextStyles
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchRecipesScreen(
-    modifier: Modifier = Modifier,
-    viewModel: SearchRecipesViewModel = viewModel(
+    modifier: Modifier = Modifier, viewModel: SearchRecipesViewModel = viewModel(
         factory = SearchRecipesViewModel.Factory
     )
 ) {
     val searchState by viewModel.state.collectAsState()
 
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        containerColor = AppColors.white,
-        topBar = {
+        modifier = Modifier.fillMaxSize(), containerColor = AppColors.white, topBar = {
             CustomAppTopBar(
-                text = stringResource(R.string.search_recipes_title),
-                showBackButton = true
+                text = stringResource(R.string.search_recipes_title), showBackButton = true
             )
-        }
-    ) { innerPadding ->
+        }) { innerPadding ->
 
         LazyColumn(
             modifier = Modifier
@@ -62,20 +56,35 @@ fun SearchRecipesScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 16.dp),
-                    onFilterClick = { viewModel.showBottomSheet(true) }
-                )
+                    value = searchState.searchKeyword,
+                    onValueChange = { viewModel.updateSearchKeyword(it) },
+                    onFilterClick = { viewModel.showBottomSheet(true) })
             }
 
             // Recent text
             item {
-                Text(
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 20.dp),
-                    text = stringResource(R.string.recent_search_subtitle),
-                    style = AppTextStyles.normalTextBold,
-                    textAlign = TextAlign.Left
-                )
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    // 왼쪽 텍스트
+                    Text(
+                        text = stringResource(searchState.headerTitleRes),
+                        style = AppTextStyles.normalTextBold
+                    )
+
+                    // “XX results”
+                    searchState.resultCountResId?.let { resId ->
+                        Text(
+                            text = stringResource(
+                                id = resId, searchState.filteredRecipes.size
+                            ),
+                            style = AppTextStyles.smallerTextRegular.copy(color = AppColors.gray3)
+                        )
+                    }
+                }
             }
 
             // Grid 만들기
@@ -106,12 +115,12 @@ fun SearchRecipesScreen(
             }
 
         }
+        // filter bottom sheet
         if (searchState.showBottomSheet) {
             FilterSearchBottomSheet(
                 onDismiss = {
                     viewModel.showBottomSheet(false)
-                }
-            )
+                })
         }
     }
 }

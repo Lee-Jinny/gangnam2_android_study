@@ -61,6 +61,7 @@
     <!-- Search Recipies-->
     <string name="recent_search_subtitle">Recent Search</string>
     <string name="search_result_subtitle">Search Result</string>
+    <string name="result_count_format">%1$d results</string>
 
     <!-- Bottom Sheet-->
     <string name="bottom_sheet_title">Filter Search</string>
