@@ -1,7 +1,7 @@
-package com.survivalcoding.gangnam2kiandroidstudy.mapper
+package com.survivalcoding.gangnam2kiandroidstudy.data.mapper
 
-import com.survivalcoding.gangnam2kiandroidstudy.dto.RecipeDto
-import com.survivalcoding.gangnam2kiandroidstudy.model.RecipeCard
+import com.survivalcoding.gangnam2kiandroidstudy.data.dto.RecipeDto
+import com.survivalcoding.gangnam2kiandroidstudy.data.model.RecipeCard
 
 fun RecipeDto.toModel(): RecipeCard {
     return RecipeCard(

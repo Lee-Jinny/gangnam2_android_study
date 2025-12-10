@@ -1,6 +1,6 @@
-package com.survivalcoding.gangnam2kiandroidstudy.data_source
+package com.survivalcoding.gangnam2kiandroidstudy.data.data_source
 
-import com.survivalcoding.gangnam2kiandroidstudy.dto.RecipeDto
+import com.survivalcoding.gangnam2kiandroidstudy.data.dto.RecipeDto
 
 
 class MockRecipeDataSourceImpl : RecipeDataSource {

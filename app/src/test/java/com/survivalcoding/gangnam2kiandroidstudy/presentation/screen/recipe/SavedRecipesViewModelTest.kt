@@ -1,7 +1,7 @@
 package com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.recipe
 
-import com.survivalcoding.gangnam2kiandroidstudy.Repository.RecipeRepository
-import com.survivalcoding.gangnam2kiandroidstudy.model.RecipeCard
+import com.survivalcoding.gangnam2kiandroidstudy.data.Repository.RecipeRepository
+import com.survivalcoding.gangnam2kiandroidstudy.data.model.RecipeCard
 import io.mockk.coEvery
 import io.mockk.mockk
 import junit.framework.TestCase.assertEquals

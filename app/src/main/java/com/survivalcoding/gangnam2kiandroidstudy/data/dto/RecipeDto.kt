@@ -1,4 +1,4 @@
-package com.survivalcoding.gangnam2kiandroidstudy.dto
+package com.survivalcoding.gangnam2kiandroidstudy.data.dto
 
 import kotlinx.serialization.Serializable
 

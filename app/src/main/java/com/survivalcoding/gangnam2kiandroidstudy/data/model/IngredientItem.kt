@@ -1,4 +1,4 @@
-package com.survivalcoding.gangnam2kiandroidstudy.model
+package com.survivalcoding.gangnam2kiandroidstudy.data.model
 
 data class IngredientItem(
     val id: Int,
