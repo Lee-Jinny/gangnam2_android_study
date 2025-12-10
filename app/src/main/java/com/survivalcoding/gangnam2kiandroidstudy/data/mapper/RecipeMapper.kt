@@ -9,6 +9,8 @@ fun RecipeDto.toModel(): RecipeCard {
         chef = this.chef ?: "Unknown",
         time = this.time ?: "-",
         rating = this.rating ?: 0.0,
-        imageUrls = this.image ?: ""
+        imageUrls = this.image ?: "",
+        createdAt = this.createdAt ?: 0L,
+        category = this.category ?: ""
     )
 }

@@ -1,2 +1,0 @@
-package com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.search_recipes
-

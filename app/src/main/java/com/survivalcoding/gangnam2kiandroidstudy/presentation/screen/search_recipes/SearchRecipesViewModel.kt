@@ -8,6 +8,11 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.survivalcoding.gangnam2kiandroidstudy.AppApplication
 import com.survivalcoding.gangnam2kiandroidstudy.data.Repository.RecipeRepository
+import com.survivalcoding.gangnam2kiandroidstudy.data.model.RecipeCard
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.FilterSearchState
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.filter.CategoryFilter
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.filter.RateFilter
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.filter.TimeFilter
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -77,6 +82,54 @@ class SearchRecipesViewModel(
     // bottom sheet 올리기
     fun showBottomSheet(show: Boolean) {
         _state.update { it.copy(showBottomSheet = show) }
+    }
+
+    // 검색어 결과
+    fun applyFilters(filter: FilterSearchState) {
+
+        _state.update { current ->
+
+            var result: List<RecipeCard> = current.recipes
+
+            // 검색어
+            result = result.filter { recipe ->
+                recipe.title.contains(current.searchKeyword, ignoreCase = true)
+            }
+
+            // Category / Rate
+            result = result.filter { recipe ->
+                filterMatches(recipe, filter)
+            }
+
+            // 3) TimeFilter 정렬
+            result = when (filter.time) {
+                TimeFilter.ALL -> result
+                TimeFilter.NEWEST -> result.sortedByDescending { it.createdAt }
+                TimeFilter.OLDEST -> result.sortedBy { it.createdAt }
+                TimeFilter.POPULARITY -> result.sortedByDescending { it.rating }
+            }
+
+
+            current.copy(
+                filteredRecipes = result,
+                filterState = filter
+            )
+        }
+    }
+
+    // 개별 필터 조건 매칭
+    private fun filterMatches(recipe: RecipeCard, filter: FilterSearchState): Boolean {
+        // Category
+        if (filter.category != CategoryFilter.ALL &&
+            recipe.category != filter.category.label
+        ) return false
+
+        // Rate
+        if (filter.rate != RateFilter.FIVE &&
+            recipe.rating < filter.rate.value
+        ) return false
+
+        return true
     }
 
 

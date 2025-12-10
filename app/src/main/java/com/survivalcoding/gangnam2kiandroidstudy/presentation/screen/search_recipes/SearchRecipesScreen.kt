@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -36,6 +37,8 @@ fun SearchRecipesScreen(
     )
 ) {
     val searchState by viewModel.state.collectAsState()
+
+    val bottomSheetState = rememberModalBottomSheetState()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(), containerColor = AppColors.white, topBar = {
@@ -118,9 +121,15 @@ fun SearchRecipesScreen(
         // filter bottom sheet
         if (searchState.showBottomSheet) {
             FilterSearchBottomSheet(
+                initialState = searchState.filterState,
                 onDismiss = {
                     viewModel.showBottomSheet(false)
-                })
+                },
+                onApplyFilter = {
+                    viewModel.applyFilters(it)
+                    viewModel.showBottomSheet(false)
+                }
+            )
         }
     }
 }

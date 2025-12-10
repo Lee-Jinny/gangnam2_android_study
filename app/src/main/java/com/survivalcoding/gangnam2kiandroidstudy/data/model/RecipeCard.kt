@@ -9,4 +9,6 @@ data class RecipeCard(
     val time: String,
     val rating: Double,
     val imageUrls: String,
+    val createdAt: Long,
+    val category: String,
 )

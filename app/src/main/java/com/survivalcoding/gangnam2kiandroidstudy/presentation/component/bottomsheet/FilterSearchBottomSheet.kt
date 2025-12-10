@@ -16,6 +16,7 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -38,13 +39,12 @@ import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppTextStyles
 @Composable
 fun FilterSearchBottomSheet(
     modifier: Modifier = Modifier,
-    onDismiss: () -> Unit
+    initialState: FilterSearchState,
+    onDismiss: () -> Unit,
+    onApplyFilter: (FilterSearchState) -> Unit
 ) {
-    var selectedTime by rememberSaveable { mutableStateOf(TimeFilter.ALL) }
-    var selectedRate by rememberSaveable { mutableStateOf(RateFilter.FIVE) }
-    var selectedCategory by rememberSaveable { mutableStateOf(CategoryFilter.ALL) }
-
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    var filterState by remember { mutableStateOf(initialState) }
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -80,8 +80,8 @@ fun FilterSearchBottomSheet(
                     FilterButton(
                         modifier = modifier.padding(end = 10.dp),
                         text = option.label,
-                        isSelected = (selectedTime == option),
-                        onClick = { selectedTime = option }
+                        isSelected = filterState.time == option,
+                        onClick = { filterState = filterState.copy(time = option) }
                     )
                 }
             }
@@ -97,8 +97,8 @@ fun FilterSearchBottomSheet(
                 RateFilter.values().forEach { option ->
                     RatingButton(
                         rate = option.label,
-                        isSelected = (selectedRate == option),
-                        onClick = { selectedRate = option }
+                        isSelected = filterState.rate == option,
+                        onClick = { filterState = filterState.copy(rate = option) }
                     )
                 }
             }
@@ -115,8 +115,8 @@ fun FilterSearchBottomSheet(
                     FilterButton(
                         modifier = modifier.padding(bottom = 10.dp, end = 10.dp),
                         text = option.label,
-                        isSelected = (selectedCategory == option),
-                        onClick = { selectedCategory = option },
+                        isSelected = filterState.category == option,
+                        onClick = { filterState = filterState.copy(category = option) },
                         hasStar = option.hasStar,
                     )
                 }
@@ -127,7 +127,8 @@ fun FilterSearchBottomSheet(
                     .padding(top = 20.dp)
                     .size(174.dp, 37.dp)
                     .fillMaxWidth(),
-                text = stringResource(R.string.filter_button_text)
+                text = stringResource(R.string.filter_button_text),
+                onClick = { onApplyFilter(filterState) }
             )
         }
     }
