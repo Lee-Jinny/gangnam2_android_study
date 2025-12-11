@@ -44,7 +44,7 @@ fun HomeRecipeCard(
         Box(
             modifier = Modifier
                 .align(Alignment.BottomCenter)   // 부모 Box의 아래 중앙
-                .size(cardWidth, 176.dp)
+                .size(150.dp, 176.dp)
                 .background(
                     color = AppColors.gray4,
                     shape = RoundedCornerShape(12.dp)
