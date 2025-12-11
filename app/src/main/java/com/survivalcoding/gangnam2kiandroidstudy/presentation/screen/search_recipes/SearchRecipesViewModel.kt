@@ -8,7 +8,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.survivalcoding.gangnam2kiandroidstudy.AppApplication
 import com.survivalcoding.gangnam2kiandroidstudy.data.Repository.RecipeRepository
-import com.survivalcoding.gangnam2kiandroidstudy.data.model.RecipeCard
+import com.survivalcoding.gangnam2kiandroidstudy.data.model.Recipe
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.FilterSearchState
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.filter.CategoryFilter
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.filter.RateFilter
@@ -103,7 +103,7 @@ class SearchRecipesViewModel(
 
         _state.update { current ->
 
-            var result: List<RecipeCard> = current.recipes
+            var result: List<Recipe> = current.recipes
 
             // 검색어
             result = result.filter { recipe ->
@@ -132,7 +132,7 @@ class SearchRecipesViewModel(
     }
 
     // 개별 필터 조건 매칭
-    private fun filterMatches(recipe: RecipeCard, filter: FilterSearchState): Boolean {
+    private fun filterMatches(recipe: Recipe, filter: FilterSearchState): Boolean {
         // Category
         if (filter.category != CategoryFilter.ALL &&
             recipe.category != filter.category.label

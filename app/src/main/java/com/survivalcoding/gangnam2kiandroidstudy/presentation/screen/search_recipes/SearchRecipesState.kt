@@ -1,12 +1,12 @@
 package com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.search_recipes
 
 import com.survivalcoding.gangnam2kiandroidstudy.R
-import com.survivalcoding.gangnam2kiandroidstudy.data.model.RecipeCard
+import com.survivalcoding.gangnam2kiandroidstudy.data.model.Recipe
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.FilterSearchState
 
 data class SearchRecipesState(
-    val recipes: List<RecipeCard> = emptyList(), // 전체 레시피 목록
-    val filteredRecipes: List<RecipeCard> = emptyList(), // 검색된 목록
+    val recipes: List<Recipe> = emptyList(), // 전체 레시피 목록
+    val filteredRecipes: List<Recipe> = emptyList(), // 검색된 목록
     val searchKeyword: String = "",
     val isLoading: Boolean = false, // 로딩 여부
     val showBottomSheet: Boolean = false,

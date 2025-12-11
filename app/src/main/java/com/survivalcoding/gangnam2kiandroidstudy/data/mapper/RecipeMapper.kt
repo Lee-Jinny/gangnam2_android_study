@@ -1,10 +1,10 @@
 package com.survivalcoding.gangnam2kiandroidstudy.data.mapper
 
 import com.survivalcoding.gangnam2kiandroidstudy.data.dto.RecipeDto
-import com.survivalcoding.gangnam2kiandroidstudy.data.model.RecipeCard
+import com.survivalcoding.gangnam2kiandroidstudy.data.model.Recipe
 
-fun RecipeDto.toModel(): RecipeCard {
-    return RecipeCard(
+fun RecipeDto.toModel(): Recipe {
+    return Recipe(
         title = this.name ?: "",
         chef = this.chef ?: "Unknown",
         time = this.time ?: "-",

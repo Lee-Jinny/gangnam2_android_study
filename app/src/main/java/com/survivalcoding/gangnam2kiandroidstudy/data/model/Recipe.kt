@@ -3,7 +3,7 @@ package com.survivalcoding.gangnam2kiandroidstudy.data.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RecipeCard(
+data class Recipe(
     val title: String,
     val chef: String,
     val time: String,
