@@ -10,5 +10,5 @@ enum class HomeCategory(val label: String) {
     VEGETABLES("Vegetables"),
     PROTEIN("Protein"),
     CEREAL("Cereal"),
-    LOCAL("Local Dishes")
+    LOCAL("Local Dishes"),
 }
