@@ -51,7 +51,7 @@ fun AverageRatingButton(
                     .align(Alignment.CenterVertically),
             )
 
-            Spacer(modifier = Modifier.width(3.25.dp))
+            Spacer(modifier = Modifier.width(3.dp))
 
             Text(
                 text = rating.toString(),
