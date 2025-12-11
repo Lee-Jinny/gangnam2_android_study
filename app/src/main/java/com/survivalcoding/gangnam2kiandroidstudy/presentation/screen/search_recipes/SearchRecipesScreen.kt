@@ -38,7 +38,9 @@ fun SearchRecipesScreen(
 ) {
 
     Scaffold(
-        modifier = Modifier.fillMaxSize(), containerColor = AppColors.white, topBar = {
+        modifier = Modifier.fillMaxSize(),
+        containerColor = AppColors.white,
+        topBar = {
             CustomAppTopBar(
                 text = stringResource(R.string.search_recipes_title), showBackButton = true
             )
