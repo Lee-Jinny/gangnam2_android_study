@@ -18,11 +18,6 @@ fun SearchRecipesRoot(
         state = state,
         onKeywordChange = viewModel::updateSearchKeyword,
         onFilterClick = { viewModel.showBottomSheet(true) },
-        onApplyFilter = {
-            viewModel.applyFilters(it)
-            viewModel.showBottomSheet(false)
-        },
-        onDismissBottomSheet = { viewModel.showBottomSheet(false) }
     )
 
     // filter bottom sheet

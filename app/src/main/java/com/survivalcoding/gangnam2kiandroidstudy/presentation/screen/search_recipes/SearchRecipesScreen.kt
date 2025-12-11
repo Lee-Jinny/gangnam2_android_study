@@ -20,8 +20,6 @@ import androidx.compose.ui.unit.dp
 import com.survivalcoding.gangnam2kiandroidstudy.R
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.Items.SearchResultCard
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.appbar.CustomAppTopBar
-import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.FilterSearchBottomSheet
-import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.FilterSearchState
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.searchbar.SearchBarContainer
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppTextStyles
@@ -33,8 +31,6 @@ fun SearchRecipesScreen(
     state: SearchRecipesState,
     onKeywordChange: (String) -> Unit,
     onFilterClick: () -> Unit,
-    onApplyFilter: (FilterSearchState) -> Unit,
-    onDismissBottomSheet: () -> Unit,
 ) {
 
     Scaffold(
