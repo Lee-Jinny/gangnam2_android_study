@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -17,11 +18,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.survivalcoding.gangnam2kiandroidstudy.R
+import com.survivalcoding.gangnam2kiandroidstudy.data.model.HomeImage
+import com.survivalcoding.gangnam2kiandroidstudy.data.model.Recipe
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.buttons.AverageRatingButton
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.buttons.BookMarkButton
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
@@ -34,6 +39,7 @@ fun HomeRecipeCardContainer(modifier: Modifier = Modifier) {
 
 @Composable
 fun HomeRecipeCard(
+    recipe: Recipe,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -57,14 +63,16 @@ fun HomeRecipeCard(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 // 제목
-                Text(
-                    text = "Classic Greek Salad",
-                    style = AppTextStyles.smallTextBold.copy(
-                        color = AppColors.gray1
-                    ),
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
-                )
+                Box(modifier = Modifier.height(42.dp)) {
+                    Text(
+                        text = recipe.title,
+                        style = AppTextStyles.smallTextBold.copy(
+                            color = AppColors.gray1
+                        ),
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -75,13 +83,13 @@ fun HomeRecipeCard(
                         verticalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
                         Text(
-                            text = "Time",
+                            text = stringResource(R.string.home_recipe_card_time),
                             style = AppTextStyles.smallerTextRegular.copy(
                                 color = AppColors.gray3
                             )
                         )
                         Text(
-                            text = "15 Mins",
+                            text = recipe.time,
                             style = AppTextStyles.smallerTextBold.copy(
                                 color = AppColors.gray1
                             )
@@ -94,16 +102,17 @@ fun HomeRecipeCard(
         }
 
         Image(
-            painter = painterResource(R.drawable.food_1),
+            painter = painterResource(recipe.homeImage.resId),
             contentDescription = null,
             modifier = Modifier
                 .size(110.dp)
                 .align(Alignment.TopCenter)  // 부모 Box의 위쪽 중앙
-                .clip(CircleShape)
+                .clip(CircleShape),
+            contentScale = ContentScale.Crop
         )
 
         AverageRatingButton(
-            rating = 4.5,
+            rating = recipe.rating,
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .offset(x = (-10).dp, y = 35.dp)
@@ -116,7 +125,15 @@ fun HomeRecipeCard(
 @Preview
 @Composable
 private fun HomeRecipeCardPreview() {
-
-    HomeRecipeCard()
-
+    val sample = Recipe(
+        title = "Sample Salad",
+        chef = "Chef",
+        time = "15 min",
+        rating = 4.5,
+        imageUrls = "",
+        createdAt = 0L,
+        category = "Cereal",
+        homeImage = HomeImage.FOOD5
+    )
+    HomeRecipeCard(recipe = sample)
 }

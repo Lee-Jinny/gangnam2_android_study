@@ -11,13 +11,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -26,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.survivalcoding.gangnam2kiandroidstudy.R
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.Items.HomeRecipeCard
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.searchbar.SearchBarContainer
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.selector.HomeCategory
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.selector.RecipeCategorySelector
@@ -84,7 +83,7 @@ fun HomeScreen(
 
             }
 
-            // Search bar + filter button
+            // Search bar + filter button - TODO: 검색창이나 필터 선택시 검색 화면으로 이동 후 기능 동작
             item {
                 SearchBarContainer(
                     modifier = Modifier
@@ -104,6 +103,19 @@ fun HomeScreen(
                     onSelectCategory = onSelectCategory
                 )
 
+            }
+
+            item {
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    items(state.filteredRecipes) { recipe ->
+                        HomeRecipeCard(
+                            recipe = recipe,
+                            modifier = Modifier.padding(horizontal = 15.dp)
+                        )
+                    }
+                }
             }
 
         }
