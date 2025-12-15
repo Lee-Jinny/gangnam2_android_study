@@ -8,12 +8,12 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.currentComposer
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation3.runtime.NavKey
 import com.survivalcoding.gangnam2kiandroidstudy.R
 import com.survivalcoding.gangnam2kiandroidstudy.core.routing.Route
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
@@ -21,7 +21,7 @@ import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
 @Composable
 fun BottomNavBar(
     items: List<BottomNavItem>,
-    currentRoute: Route,
+    currentRoute: NavKey,
     onItemClick: (Route) -> Unit,
     modifier: Modifier = Modifier,
 ) {

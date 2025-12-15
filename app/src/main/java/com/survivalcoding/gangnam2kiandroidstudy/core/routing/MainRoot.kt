@@ -12,19 +12,29 @@ import androidx.navigation3.ui.NavDisplay
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.navigation.BottomNavBar
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.navigation.bottomNavItemList
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.home.HomeRoot
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.notifications.NotificationsScreen
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.profile.ProfileScreen
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.recipe.SavedRecipesRoot
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
 
 @Composable
 fun MainRoot() {
     val mainBackStack = rememberNavBackStack(Route.Home)
 
+    val currentKey = mainBackStack.lastOrNull() ?: Route.Home
+
     Scaffold(
         containerColor = AppColors.white,
         bottomBar = {
             BottomNavBar(
                 items = bottomNavItemList,
-                currentRoute = Route.Home,
-                onItemClick = {}
+                currentRoute = currentKey,
+                onItemClick = { route ->
+                    if (route != currentKey) {
+                        mainBackStack.clear()
+                        mainBackStack.add(route)
+                    }
+                }
             )
         }
     ) { innerPadding ->
@@ -42,11 +52,16 @@ fun MainRoot() {
                 }
 
                 entry<Route.SavedRecipes> {
+                    SavedRecipesRoot()
 
                 }
 
                 entry<Route.Profile> {
+                    ProfileScreen()
 
+                }
+                entry<Route.Notifications> {
+                    NotificationsScreen()
                 }
             }
         )
