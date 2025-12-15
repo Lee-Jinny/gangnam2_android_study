@@ -34,6 +34,7 @@ import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppTextStyles
 fun HomeScreen(
     state: HomeState,
     onSelectCategory: (HomeCategory) -> Unit,
+    onSearchClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(
@@ -84,6 +85,7 @@ fun HomeScreen(
                 value = "",
                 onValueChange = {},
                 onFilterClick = {},
+                onClick = onSearchClick
             )
         }
 
@@ -125,5 +127,6 @@ fun RecipeCategorySelectorPreview() {
     HomeScreen(
         state = fakeState,
         onSelectCategory = {},
+        onSearchClick = {}
     )
 }

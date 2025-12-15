@@ -17,7 +17,8 @@ import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
 fun HomeRoot(
     modifier: Modifier = Modifier,
     application: AppApplication =
-        LocalContext.current.applicationContext as AppApplication
+        LocalContext.current.applicationContext as AppApplication,
+    onNavigateToSearch: () -> Unit,
 ) {
     val viewModel: HomeViewModel = viewModel(
         factory = HomeViewModel.Factory(application)
@@ -35,6 +36,7 @@ fun HomeRoot(
                 .padding(horizontal = 30.dp),
             state = state,
             onSelectCategory = viewModel::onSelectCategory,
+            onSearchClick = onNavigateToSearch
         )
     }
 }

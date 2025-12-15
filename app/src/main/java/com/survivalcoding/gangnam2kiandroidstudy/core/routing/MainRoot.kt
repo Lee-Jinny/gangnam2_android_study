@@ -15,27 +15,36 @@ import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.home.HomeRo
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.notifications.NotificationsScreen
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.profile.ProfileScreen
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.recipe.SavedRecipesRoot
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.search_recipes.SearchRecipesRoot
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
 
 @Composable
 fun MainRoot() {
     val mainBackStack = rememberNavBackStack(Route.Home)
-
     val currentKey = mainBackStack.lastOrNull() ?: Route.Home
+
+    val showBottomBar = currentKey in listOf(
+        Route.Home,
+        Route.SavedRecipes,
+        Route.Notifications,
+        Route.Profile
+    )
 
     Scaffold(
         containerColor = AppColors.white,
         bottomBar = {
-            BottomNavBar(
-                items = bottomNavItemList,
-                currentRoute = currentKey,
-                onItemClick = { route ->
-                    if (route != currentKey) {
-                        mainBackStack.clear()
-                        mainBackStack.add(route)
+            if (showBottomBar) {
+                BottomNavBar(
+                    items = bottomNavItemList,
+                    currentRoute = currentKey,
+                    onItemClick = { route ->
+                        if (route != currentKey) {
+                            mainBackStack.clear()
+                            mainBackStack.add(route)
+                        }
                     }
-                }
-            )
+                )
+            }
         }
     ) { innerPadding ->
         NavDisplay(
@@ -48,20 +57,33 @@ fun MainRoot() {
             entryProvider = entryProvider {
 
                 entry<Route.Home> {
-                    HomeRoot()
+                    HomeRoot(
+                        onNavigateToSearch = {
+                            mainBackStack.add(Route.SearchRecipes)
+                        }
+                    )
                 }
 
                 entry<Route.SavedRecipes> {
                     SavedRecipesRoot()
-
                 }
 
                 entry<Route.Profile> {
                     ProfileScreen()
-
                 }
+
                 entry<Route.Notifications> {
                     NotificationsScreen()
+                }
+
+                entry<Route.SearchRecipes> {
+                    SearchRecipesRoot(
+                        onBack = {
+                            if (mainBackStack.size > 1) {
+                                mainBackStack.removeAt(mainBackStack.lastIndex)
+                            }
+                        }
+                    )
                 }
             }
         )
