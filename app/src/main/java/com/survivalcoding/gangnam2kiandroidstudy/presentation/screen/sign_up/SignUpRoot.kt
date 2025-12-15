@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.survivalcoding.gangnam2kiandroidstudy.presentation.sign_in.SignUpScreen
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
 
 

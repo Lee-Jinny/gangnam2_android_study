@@ -1,4 +1,4 @@
-package com.survivalcoding.gangnam2kiandroidstudy.presentation.sign_in
+package com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.sign_up
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,11 +13,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -37,7 +33,6 @@ import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.auth.Cen
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.auth.SocialLoginRow
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.buttons.BigButton
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.textfields.InputField
-import com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.sign_up.SignUpState
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppTextStyles
 
