@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -22,9 +23,11 @@ fun SignUpRoot(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val navigateToHome by viewModel.navigateToHome.collectAsStateWithLifecycle()
 
-    if (navigateToHome) {
-        onNavigateToHome()
-        viewModel.onNavigationHandled()
+    LaunchedEffect(navigateToHome) {
+        if (navigateToHome) {
+            onNavigateToHome()
+            viewModel.onNavigationHandled()
+        }
     }
 
     Scaffold(containerColor = AppColors.white) { innerPadding ->
