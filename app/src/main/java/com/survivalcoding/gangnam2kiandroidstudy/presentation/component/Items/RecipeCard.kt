@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.survivalcoding.gangnam2kiandroidstudy.R
+import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.buttons.BookMarkButton
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppTextStyles
 
@@ -157,33 +158,11 @@ fun RecipeCard(
                         style = AppTextStyles.smallerTextRegular.copy(color = AppColors.white)
                     )
                     Spacer(Modifier.width(10.dp))
-                    Box(
-                        modifier = Modifier
-                            .size(24.dp)
-                            .background(
-                                AppColors.white,
-                                shape = RoundedCornerShape(12.dp)
-                            )
-                            .clickable {
-                                onBookmarkClick()
-                            },
-                        contentAlignment = Alignment.Center,
 
-                        ) {
-                        Icon(
-                            painter = painterResource(
-                                if (isBookmarked)
-                                    R.drawable.ic_bookmark
-                                else
-                                    R.drawable.ic_bookmark_outline
-                            ),
-                            contentDescription = "book mark",
-                            tint = AppColors.primary80,
-                            modifier = Modifier
-                                .size(16.dp)
-                                .clickable { onBookmarkClick() }
-                        )
-                    }
+                    BookMarkButton(
+                        isBookmarked = isBookmarked,
+                        onClick = onBookmarkClick
+                    )
                 }
             }
         }

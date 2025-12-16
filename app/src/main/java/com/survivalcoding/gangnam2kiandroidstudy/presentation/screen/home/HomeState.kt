@@ -6,5 +6,6 @@ import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.selector
 data class HomeState(
     val recipes: List<Recipe> = emptyList(),
     val selectedCategory: HomeCategory = HomeCategory.ALL,
-    val filteredRecipes: List<Recipe> = emptyList()
+    val filteredRecipes: List<Recipe> = emptyList(),
+    val bookmarkedIds: Set<Int> = emptySet(),
 )

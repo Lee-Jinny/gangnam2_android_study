@@ -35,6 +35,8 @@ import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppTextStyles
 @Composable
 fun HomeRecipeCard(
     recipe: Recipe,
+    isBookmarked: Boolean,
+    onBookmarkClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -91,7 +93,10 @@ fun HomeRecipeCard(
                         )
                     }
 
-                    BookMarkButton()
+                    BookMarkButton(
+                        isBookmarked = isBookmarked,
+                        onClick = onBookmarkClick
+                    )
                 }
             }
         }
@@ -131,5 +136,9 @@ private fun HomeRecipeCardPreview() {
         category = "Cereal",
         homeImage = HomeImage.FOOD5
     )
-    HomeRecipeCard(recipe = sample)
+    HomeRecipeCard(
+        recipe = sample,
+        isBookmarked = true,
+        onBookmarkClick = {}
+    )
 }
