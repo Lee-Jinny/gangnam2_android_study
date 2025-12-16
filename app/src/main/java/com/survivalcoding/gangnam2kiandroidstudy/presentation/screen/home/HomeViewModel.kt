@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.survivalcoding.gangnam2kiandroidstudy.AppApplication
-import com.survivalcoding.gangnam2kiandroidstudy.data.Repository.RecipeRepository
+import com.survivalcoding.gangnam2kiandroidstudy.domain.repository.RecipeRepository
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.selector.HomeCategory
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

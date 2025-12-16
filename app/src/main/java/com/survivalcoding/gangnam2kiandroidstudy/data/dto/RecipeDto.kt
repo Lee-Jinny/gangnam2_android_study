@@ -1,6 +1,6 @@
 package com.survivalcoding.gangnam2kiandroidstudy.data.dto
 
-import com.survivalcoding.gangnam2kiandroidstudy.data.model.HomeImage
+import com.survivalcoding.gangnam2kiandroidstudy.domain.model.HomeImage
 import kotlinx.serialization.Serializable
 
 @Serializable

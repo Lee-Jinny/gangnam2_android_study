@@ -1,7 +1,7 @@
 package com.survivalcoding.gangnam2kiandroidstudy.data.data_source
 
 import com.survivalcoding.gangnam2kiandroidstudy.data.dto.RecipeDto
-import com.survivalcoding.gangnam2kiandroidstudy.data.model.HomeImage
+import com.survivalcoding.gangnam2kiandroidstudy.domain.model.HomeImage
 
 
 class MockRecipeDataSourceImpl : RecipeDataSource {
