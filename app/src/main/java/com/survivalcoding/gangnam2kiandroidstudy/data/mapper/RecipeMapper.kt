@@ -6,6 +6,7 @@ import com.survivalcoding.gangnam2kiandroidstudy.domain.model.Recipe
 
 fun RecipeDto.toModel(): Recipe {
     return Recipe(
+        id = this.id ?: -1,
         title = this.name ?: "",
         chef = this.chef ?: "Unknown",
         time = this.time ?: "-",

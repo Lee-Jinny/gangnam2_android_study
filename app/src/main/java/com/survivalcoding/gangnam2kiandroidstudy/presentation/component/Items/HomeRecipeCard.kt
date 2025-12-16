@@ -121,6 +121,7 @@ fun HomeRecipeCard(
 @Composable
 private fun HomeRecipeCardPreview() {
     val sample = Recipe(
+        id = 1,
         title = "Sample Salad",
         chef = "Chef",
         time = "15 min",

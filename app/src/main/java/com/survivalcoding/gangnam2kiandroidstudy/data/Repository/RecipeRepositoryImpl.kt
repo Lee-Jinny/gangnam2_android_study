@@ -11,4 +11,20 @@ class RecipeRepositoryImpl(
     override suspend fun getRecipes(): List<Recipe> {
         return recipeDataSource.getRecipes().map { it.toModel() }
     }
+
+    override suspend fun getRecipeById(id: Int): Recipe? {
+        return recipeDataSource
+            .getRecipes()
+            .firstOrNull { it.id == id }
+            ?.toModel()
+    }
+
+    override suspend fun getRecipesByIds(ids: List<Int>): List<Recipe> {
+        if (ids.isEmpty()) return emptyList()
+
+        return recipeDataSource
+            .getRecipes()
+            .filter { it.id in ids }
+            .map { it.toModel() }
+    }
 }

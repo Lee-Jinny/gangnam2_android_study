@@ -17,6 +17,7 @@ import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.appbar.C
 fun SavedRecipesScreen(
     state: SavedRecipesState,
     modifier: Modifier = Modifier,
+    onBookmarkClick: (Int) -> Unit
 ) {
     Column(modifier = modifier.fillMaxSize()) {
         CustomAppTopBar(
@@ -27,6 +28,8 @@ fun SavedRecipesScreen(
             modifier = Modifier.fillMaxSize()
         ) {
             items(state.recipes) { recipe ->
+                val isBookmarked = recipe.id in state.bookmarkedIds
+
                 RecipeCard(
                     modifier = Modifier.padding(vertical = 10.dp),
                     name = recipe.title,
@@ -34,8 +37,13 @@ fun SavedRecipesScreen(
                     chef = recipe.chef,
                     time = recipe.time,
                     rating = recipe.rating,
+                    isBookmarked = isBookmarked,
+                    onBookmarkClick = {
+                        onBookmarkClick(recipe.id)
+                    }
                 )
             }
         }
     }
 }
+
