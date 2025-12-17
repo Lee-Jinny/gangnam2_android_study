@@ -8,25 +8,18 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.survivalcoding.gangnam2kiandroidstudy.AppApplication
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.appbar.CustomAppTopBar
 import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun IngredientRoot(
     recipeId: Int,
     modifier: Modifier = Modifier,
     onBack: () -> Unit,
-    application: AppApplication =
-        LocalContext.current.applicationContext as AppApplication
+    viewModel: IngredientViewModel = koinViewModel()
 ) {
-    val viewModel: IngredientViewModel = viewModel(
-        factory = IngredientViewModel.factory(application)
-    )
-
     val state by viewModel.state.collectAsState()
 
     // 최초 진입 시 로드

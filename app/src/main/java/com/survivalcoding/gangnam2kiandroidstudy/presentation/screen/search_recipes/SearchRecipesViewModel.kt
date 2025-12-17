@@ -1,11 +1,7 @@
 package com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.search_recipes
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.survivalcoding.gangnam2kiandroidstudy.AppApplication
 import com.survivalcoding.gangnam2kiandroidstudy.domain.model.Recipe
 import com.survivalcoding.gangnam2kiandroidstudy.domain.repository.RecipeRepository
 import com.survivalcoding.gangnam2kiandroidstudy.presentation.component.bottomsheet.FilterSearchState
@@ -143,17 +139,5 @@ class SearchRecipesViewModel(
         ) return false
 
         return true
-    }
-
-
-    companion object {
-        fun factory(application: AppApplication): ViewModelProvider.Factory =
-            viewModelFactory {
-                initializer {
-                    SearchRecipesViewModel(
-                        recipeRepository = application.recipeRepository
-                    )
-                }
-            }
     }
 }

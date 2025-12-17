@@ -1,11 +1,7 @@
 package com.survivalcoding.gangnam2kiandroidstudy.presentation.screen.home
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.survivalcoding.gangnam2kiandroidstudy.AppApplication
 import com.survivalcoding.gangnam2kiandroidstudy.core.Result
 import com.survivalcoding.gangnam2kiandroidstudy.domain.repository.BookmarkRepository
 import com.survivalcoding.gangnam2kiandroidstudy.domain.repository.RecipeRepository
@@ -96,19 +92,5 @@ class HomeViewModel(
                 }
             }
         }
-    }
-
-
-    companion object {
-        fun Factory(application: AppApplication): ViewModelProvider.Factory =
-            viewModelFactory {
-                initializer {
-                    HomeViewModel(
-                        recipeRepository = application.recipeRepository,
-                        bookmarkRepository = application.bookmarkRepository,
-                        toggleBookmarkUseCase = application.toggleBookmarkUseCase
-                    )
-                }
-            }
     }
 }
