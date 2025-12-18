@@ -83,6 +83,9 @@ fun MainRoot() {
 
                 entry<Route.SearchRecipes> {
                     SearchRecipesRoot(
+                        onNavigateToRecipeDetail = { recipeId ->
+                            mainBackStack.add(Route.RecipeDetail(recipeId))
+                        },
                         onBack = {
                             if (mainBackStack.size > 1) {
                                 mainBackStack.removeAt(mainBackStack.lastIndex)
