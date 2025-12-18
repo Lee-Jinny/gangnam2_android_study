@@ -142,11 +142,11 @@ fun HomeScreen(
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(15.dp),
             ) {
-                items(state.newRecipes) { newRecipe ->
+                items(state.newRecipes) { recipe ->
                     NewRecipeCard(
-                        newRecipe = newRecipe,
+                        newRecipe = recipe,
                         modifier = Modifier,
-                        onClick = { onRecipeClick(newRecipe.recipeId) }
+                        onClick = { onRecipeClick(recipe.recipeId) }
                     )
                 }
             }
