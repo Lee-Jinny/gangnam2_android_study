@@ -54,7 +54,7 @@ android {
         }
         create("qa") {
             dimension = "version"
-            versionName = "-qa"
+            versionNameSuffix = "-qa"
             applicationIdSuffix = ".qa"
         }
     }
