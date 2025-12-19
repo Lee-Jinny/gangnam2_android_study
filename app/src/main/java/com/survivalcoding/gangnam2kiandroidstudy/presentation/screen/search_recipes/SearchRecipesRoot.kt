@@ -69,7 +69,6 @@ fun SearchRecipesRoot(
                 .padding(horizontal = 30.dp),
             state = state,
             onAction = viewModel::onAction,
-            onRecipeClick = viewModel::onRecipeClick
         )
     }
 

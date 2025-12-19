@@ -84,10 +84,14 @@ class SearchRecipesViewModel @Inject constructor(
                 showBottomSheet(false)
                 emitFilterAppliedEvent()
             }
+
+            is SearchRecipesAction.RecipeClicked -> {
+                onRecipeClick(action.recipeId)
+            }
         }
     }
 
-    fun onRecipeClick(recipeId: Int) {
+    private fun onRecipeClick(recipeId: Int) {
         viewModelScope.launch {
             _event.emit(
                 SearchRecipesEvent.NavigateToRecipeDetail(recipeId)
