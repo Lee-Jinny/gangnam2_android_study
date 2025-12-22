@@ -24,7 +24,7 @@ fun DebugNetworkPanelImpl(
             .background(AppColors.black.copy(alpha = 0.7f))
             .padding(12.dp)
     ) {
-        Text(" Network Dev Panel", color = AppColors.white)
+        Text("Network Dev Panel", color = AppColors.white)
 
         Spacer(Modifier.height(8.dp))
 
