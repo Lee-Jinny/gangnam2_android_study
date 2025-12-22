@@ -89,7 +89,7 @@ sealed interface UiEvent {
 - ❌ ViewModel에서 Navigation 실행
 - ❌ ViewModel에서 Snackbar 호출
 - State와 Event를 “방출”만 한다
-    ````kotlin
+    ```kotlin
     private val _event = MutableSharedFlow<UiEvent>()
     val event = _event.asSharedFlow()
     ```

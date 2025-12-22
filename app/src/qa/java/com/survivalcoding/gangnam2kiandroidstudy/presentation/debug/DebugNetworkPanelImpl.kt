@@ -24,7 +24,7 @@ fun DebugNetworkPanelImpl(
             .background(AppColors.black.copy(alpha = 0.7f))
             .padding(12.dp)
     ) {
-        Text(" Network Qa Panel", color = AppColors.white)
+        Text("Network Qa Panel", color = AppColors.white)
 
         Spacer(Modifier.height(8.dp))
 
