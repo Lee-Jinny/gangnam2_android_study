@@ -40,7 +40,7 @@ class SplashViewModel @Inject constructor(
     // Action
     fun onAction(action: SplashAction) {
         when (action) {
-            SplashAction.ClickStratButton -> {
+            SplashAction.ClickStartButton -> {
                 if (isNetworkAvailable.value) {
                     onButtonClick()
                 }

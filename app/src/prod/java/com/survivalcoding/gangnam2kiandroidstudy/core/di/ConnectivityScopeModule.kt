@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import javax.inject.Singleton
 
+
 @Module
 @InstallIn(SingletonComponent::class)
 object ConnectivityScopeModule {
@@ -17,5 +18,5 @@ object ConnectivityScopeModule {
     @Singleton
     @ApplicationScope
     fun provideApplicationScope(): CoroutineScope =
-        CoroutineScope(SupervisorJob() + Dispatchers.Default)
+        CoroutineScope(SupervisorJob() + Dispatchers.IO)
 }

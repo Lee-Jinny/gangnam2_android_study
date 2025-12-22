@@ -100,7 +100,7 @@ fun SplashScreen(
                 text = stringResource(R.string.splash_button),
                 enabled = isNetworkAvailable,
                 onClick = {
-                    onAction(SplashAction.ClickStratButton)
+                    onAction(SplashAction.ClickStartButton)
                 }
             )
         }
