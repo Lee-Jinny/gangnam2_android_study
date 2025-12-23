@@ -41,6 +41,10 @@ class SavedRecipesViewModel @Inject constructor(
             is SavedRecipesAction.BookmarkClicked -> {
                 onBookmarkClick(action.recipeId)
             }
+
+            is SavedRecipesAction.ReachedBottom -> {
+                emitReachedBottomSnackBar()
+            }
         }
     }
 
@@ -49,6 +53,17 @@ class SavedRecipesViewModel @Inject constructor(
         viewModelScope.launch {
             _event.emit(
                 SavedRecipesEvent.NavigateToRecipeDetail(recipeId)
+            )
+        }
+    }
+
+    // snack bar
+    private fun emitReachedBottomSnackBar() {
+        viewModelScope.launch {
+            _event.emit(
+                SavedRecipesEvent.ShowSnackBar(
+                    message = "모든 저장된 레시피를 확인했습니다."
+                )
             )
         }
     }
