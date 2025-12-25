@@ -13,6 +13,7 @@ class CustomTestRunner : AndroidJUnitRunner() {
         className: String?,
         context: Context?
     ): Application {
+        android.util.Log.d("CustomTestRunner", "Using HiltTestApplication")
         return super.newApplication(cl, HiltTestApplication::class.java.name, context)
     }
 }

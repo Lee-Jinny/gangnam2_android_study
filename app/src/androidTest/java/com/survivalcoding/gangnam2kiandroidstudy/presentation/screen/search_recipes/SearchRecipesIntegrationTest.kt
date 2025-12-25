@@ -11,7 +11,11 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performTextInput
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.survivalcoding.gangnam2kiandroidstudy.MainActivity
+import com.survivalcoding.gangnam2kiandroidstudy.core.di.NetworkModule
 import com.survivalcoding.gangnam2kiandroidstudy.core.di.RepositoryModule
+import com.survivalcoding.gangnam2kiandroidstudy.core.network.NetworkEvent
+import com.survivalcoding.gangnam2kiandroidstudy.core.network.NetworkMonitor
+import com.survivalcoding.gangnam2kiandroidstudy.core.network.NetworkStatus
 import com.survivalcoding.gangnam2kiandroidstudy.data.repository.FakeRecipeRepository
 import com.survivalcoding.gangnam2kiandroidstudy.domain.model.Chef
 import com.survivalcoding.gangnam2kiandroidstudy.domain.model.IngredientItem
@@ -28,12 +32,16 @@ import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flow
 import org.junit.Rule
 import org.junit.Test
 import javax.inject.Singleton
 
 @HiltAndroidTest
-@UninstallModules(RepositoryModule::class)
+@UninstallModules(RepositoryModule::class, NetworkModule::class)
 class SearchRecipesIntegrationTest {
 
     @get:Rule(order = 0)
@@ -86,6 +94,15 @@ class SearchRecipesIntegrationTest {
             return object : ProcedureRepository {
                 override suspend fun getProceduresByRecipeId(recipeId: Int): List<Procedure> =
                     emptyList()
+            }
+        }
+
+        @Provides
+        @Singleton
+        fun provideNetworkMonitor(): NetworkMonitor {
+            return object : NetworkMonitor {
+                override val events: Flow<NetworkEvent> = flow { }
+                override val status: StateFlow<NetworkStatus> = MutableStateFlow(NetworkStatus.Available)
             }
         }
     }
