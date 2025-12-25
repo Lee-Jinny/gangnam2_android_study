@@ -23,6 +23,16 @@ fun IngredientRoot(
 ) {
     val state by viewModel.state.collectAsState()
 
+    LaunchedEffect(Unit) {
+        viewModel.event.collect { event ->
+            when (event) {
+                is IngredientEvent.NavigateBack -> {
+                    onBack()
+                }
+            }
+        }
+    }
+
     // 최초 진입 시 로드
     LaunchedEffect(recipeId) {
         viewModel.loadIngredients(recipeId)
@@ -44,10 +54,7 @@ fun IngredientRoot(
                 .padding(innerPadding)
                 .padding(horizontal = 30.dp),
             state = state,
-            onTabSelected = viewModel::onTabSelected,
-            onFollowClick = {
-                // TODO: Follow 기능 연결
-            },
+            onAction = viewModel::onAction
         )
     }
 }
