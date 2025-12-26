@@ -113,11 +113,11 @@ fun IngredientRoot(
 
             if (isShareDialogVisible) {
                 RecipeLinkDialog(
-                    recipeLink = "app.recipe.co/recipe_${recipeId}",
+                    recipeLink = "app.recipe.co/recipe/${recipeId}",
                     onDismiss = { isShareDialogVisible = false },
                     onCopyClick = {
                         // 클립보드 복사 로직
-                        clipboardManager.setText(AnnotatedString("app.recipe.co/recipe_${recipeId}"))
+                        clipboardManager.setText(AnnotatedString("app.recipe.co/recipe/${recipeId}"))
                         isShareDialogVisible = false
                     }
                 )
