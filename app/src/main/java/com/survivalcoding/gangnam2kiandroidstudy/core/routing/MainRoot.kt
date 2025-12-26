@@ -24,6 +24,7 @@ import com.survivalcoding.gangnam2kiandroidstudy.ui.theme.AppColors
 @Composable
 fun MainRoot(
     deepLinkUri: String? = null,
+    onDeepLinkHandled: () -> Unit = {}
 ) {
     // 1. 초기 스택 생성
     val mainBackStack = rememberNavBackStack(Route.Home)
@@ -32,21 +33,26 @@ fun MainRoot(
     LaunchedEffect(deepLinkUri) {
         if (deepLinkUri != null) {
             val uri = deepLinkUri.toUri()
-            val pathSegments = uri.pathSegments
+            if (uri.scheme == "https" || uri.scheme == "myapp") {
+                val pathSegments = uri.pathSegments
 
-            when {
-                // myapp://recipes/saved
-                pathSegments.contains("saved") -> {
+                // "saved" 문자열이 경로 어디에든 포함되어 있는지 확인
+                if (pathSegments.contains("saved")) {
                     mainBackStack.clear()
                     mainBackStack.add(Route.SavedRecipes)
+                    onDeepLinkHandled()
                 }
-                // myapp://recipes/detail/1
-                pathSegments.contains("detail") -> {
-                    val recipeId = pathSegments.getOrNull(1)?.toIntOrNull()
+                // "detail" 문자열을 찾고, 그 바로 다음 인덱스의 값을 ID로 사용
+                else if (pathSegments.contains("detail")) {
+                    val detailIndex = pathSegments.indexOf("detail")
+                    val recipeIdRaw = pathSegments.getOrNull(detailIndex + 1)
+                    val recipeId = recipeIdRaw?.toIntOrNull()
+
                     if (recipeId != null) {
                         mainBackStack.clear()
-                        mainBackStack.add(Route.Home) // 뒤로가기 시 홈으로 가도록 설정
+                        mainBackStack.add(Route.Home) // 뒤로가기 베이스
                         mainBackStack.add(Route.RecipeDetail(recipeId))
+                        onDeepLinkHandled()
                     }
                 }
             }

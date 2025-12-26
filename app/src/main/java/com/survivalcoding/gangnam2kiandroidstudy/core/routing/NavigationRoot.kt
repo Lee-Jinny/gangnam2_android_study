@@ -56,12 +56,14 @@ fun NavigationRoot(
     LaunchedEffect(deepLinkUri) {
         if (deepLinkUri != null) {
             val uri = deepLinkUri.toUri()
-            if (uri.scheme == "myapp" && uri.host == "recipes") {
+            // host가 recipes(커스텀 스킴) 이거나 web.app(앱 링크)인 경우 모두 처리
+            if (uri.host == "recipes" || uri.host == "gangnam-android-study.web.app") {
                 topLevelBackStack.replaceAll { Route.Main }
+                // 주의: 여기서 바로 onDeepLinkHandled()를 호출하면 MainRoot가 값을 못 읽을 수 있으므로
+                // MainRoot 내부에서 호출하거나, 시간을 약간 지연시킵니다.
             }
         }
     }
-
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { innerPadding ->
@@ -105,7 +107,11 @@ fun NavigationRoot(
                     }
                     entry<Route.Main> {
                         key(deepLinkUri) {
-                            MainRoot(deepLinkUri = deepLinkUri)
+                            MainRoot(
+                                deepLinkUri = deepLinkUri,
+                                // MainRoot 내부에서 처리가 끝났을 때 Activity의 상태를 비우도록 전달
+                                onDeepLinkHandled = onDeepLinkHandled
+                            )
                         }
                     }
                 }

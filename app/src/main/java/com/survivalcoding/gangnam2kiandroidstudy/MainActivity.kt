@@ -33,6 +33,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             KeyboardVisibilityHandler {
+                
                 Surface(
                     modifier = Modifier
                         .fillMaxSize()

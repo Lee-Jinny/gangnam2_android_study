@@ -35,6 +35,17 @@
                     android:host="recipes"
                     android:scheme="myapp" />
             </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="gangnam-android-study.web.app"
+                    android:scheme="https" />
+            </intent-filter>
+
         </activity>
     </application>
 
