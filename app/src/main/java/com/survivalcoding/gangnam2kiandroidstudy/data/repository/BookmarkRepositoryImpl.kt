@@ -5,11 +5,13 @@ import com.survivalcoding.gangnam2kiandroidstudy.data.entity.BookmarkEntity
 import com.survivalcoding.gangnam2kiandroidstudy.domain.repository.BookmarkRepository
 import javax.inject.Inject
 
+import kotlinx.coroutines.flow.Flow
+
 class BookmarkRepositoryImpl @Inject constructor(
     private val bookmarkDao: BookmarkDao
 ) : BookmarkRepository {
 
-    override suspend fun getSavedRecipeIds(): List<Int> {
+    override fun getSavedRecipeIds(): Flow<List<Int>> {
         return bookmarkDao.getAllIds()
     }
 

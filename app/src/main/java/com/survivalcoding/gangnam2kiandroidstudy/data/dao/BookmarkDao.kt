@@ -5,11 +5,12 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.survivalcoding.gangnam2kiandroidstudy.data.entity.BookmarkEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface BookmarkDao {
     @Query("SELECT recipeId FROM bookmarks")
-    suspend fun getAllIds(): List<Int>
+    fun getAllIds(): Flow<List<Int>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(bookmark: BookmarkEntity)
